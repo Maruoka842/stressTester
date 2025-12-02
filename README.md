@@ -37,7 +37,7 @@
     ```bash
     python main.py
     ```
-    batファイルを準備しておくと便利です。exeファイルはリリースページにあります。
+    batファイルを準備しておくと便利です。Windows用の実行可能ファイル（.exe）は、以下のGitHubリリースから直接ダウンロードできます。                                                                                                 [Stress Tester GUI v1.0.0 (Windows .exe)](https://github.com/Maruoka842/stressTester/releases/tag/v1.0.0)
 
 2.  **コードを記述する:**
     -   **ジェネレータ (A):** テストケースの入力を生成し、標準出力に出力するスクリプトを記述します。
