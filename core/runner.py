@@ -3,6 +3,10 @@ import os
 import tempfile
 import shutil
 import uuid
+import sys
+
+# Platform-specific flag to prevent console window from appearing on Windows
+CREATION_FLAGS = subprocess.CREATE_NO_WINDOW if sys.platform == 'win32' else 0
 
 class Runner:
     def __init__(self, code, language, timeout):
@@ -39,7 +43,8 @@ class PythonRunner(Runner):
                 input=input_str,
                 capture_output=True,
                 text=True,
-                timeout=self.timeout
+                timeout=self.timeout,
+                creationflags=CREATION_FLAGS
             )
             return process.stdout, process.stderr, process.returncode
         except FileNotFoundError:
@@ -63,7 +68,8 @@ class CppRunner(Runner):
             process = subprocess.run(
                 ["g++", self.source_file, "-o", self.executable],
                 capture_output=True,
-                text=True
+                text=True,
+                creationflags=CREATION_FLAGS
             )
         except FileNotFoundError:
             return False, "g++ compiler not found. Please install MinGW-w64 and add it to your system's PATH."
@@ -81,7 +87,8 @@ class CppRunner(Runner):
                 input=input_str,
                 capture_output=True,
                 text=True,
-                timeout=self.timeout
+                timeout=self.timeout,
+                creationflags=CREATION_FLAGS
             )
             return process.stdout, process.stderr, process.returncode
         except subprocess.TimeoutExpired:
@@ -105,7 +112,8 @@ class JavaRunner(Runner):
             process = subprocess.run(
                 ["javac", self.source_file],
                 capture_output=True,
-                text=True
+                text=True,
+                creationflags=CREATION_FLAGS
             )
         except FileNotFoundError:
             return False, "javac compiler not found. Please install a JDK and add it to your system's PATH."
@@ -121,7 +129,8 @@ class JavaRunner(Runner):
                 input=input_str,
                 capture_output=True,
                 text=True,
-                timeout=self.timeout
+                timeout=self.timeout,
+                creationflags=CREATION_FLAGS
             )
             return process.stdout, process.stderr, process.returncode
         except FileNotFoundError:
