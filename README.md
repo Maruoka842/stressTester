@@ -21,8 +21,8 @@
 
 1.  **リポジトリをクローンする:**
     ```bash
-    git clone https://github.com/YOUR_USERNAME/YOUR_REPOSITORY.git
-    cd YOUR_REPOSITORY
+    git clone https://github.com/Maruoka842/stressTester.git
+    cd stressTester
     ```
 
 2.  **依存関係をインストールする:**
@@ -38,7 +38,7 @@
     ```bash
     python main.py
     ```
-
+batファイルを準備しておくと便利です。
 2.  **コードを記述する:**
     -   **ジェネレータ (A):** テストケースの入力を生成し、標準出力に出力するスクリプトを記述します。
     -   **解答1 (B):** あなたの最初の解答。標準入力から読み込み、結果を標準出力に出力します。
